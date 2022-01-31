@@ -14,7 +14,11 @@ namespace Final_Project
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
+<<<<<<< HEAD
             Console.WriteLine("This line was added by Cullin.");
+=======
+            Console.WriteLine("It's yosha");
+>>>>>>> ad6612edfd765908c169c213e2cc001fab8f75db
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
