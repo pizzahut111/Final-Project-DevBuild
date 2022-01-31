@@ -14,6 +14,7 @@ namespace Final_Project
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
+            Console.WriteLine("It's yosha");
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
