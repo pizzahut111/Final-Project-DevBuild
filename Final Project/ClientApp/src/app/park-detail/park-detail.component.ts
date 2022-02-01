@@ -8,16 +8,19 @@ import { ParkService } from '../Park.service';
   styleUrls: ['./park-detail.component.css']
 })
 export class ParkDetailComponent implements OnInit {
-@Input() parkCode: string;
+  @Input() parkCode: string;
 
-park?: Park;
+  park?: Park;
 
   constructor(private parkService: ParkService) { }
 
   ngOnInit() {
+    console.log();
     this.parkService.GetParkByParkCode(this.parkCode).subscribe(
-      (response:any)=> {console.log(response);
-      this.park=response;}
+      (response: any) => {
+        console.log(response);
+        this.park = response;
+      }
     );
   }
 

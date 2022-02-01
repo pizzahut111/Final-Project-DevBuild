@@ -1,20 +1,24 @@
 import { Injectable, Inject } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Park } from './Park';
 
 @Injectable({
-    providedIn: 'root'
-  })
+  providedIn: 'root'
+})
 export class ParkService {
-url: string = "Park";
-park?: Park;
-constructor(private http:HttpClient) { 
 
-}
-GetParkByParkCode(parkCode:string):Observable<Object>{
-    let url: string = "https://developer.nps.gov/api/v1/parks?parkCode=yell&api_key=dD5Z8MilCF87nuaBngedmFcF1vDCl2hqdblh89yh";
-    let result : Observable<any> = this.http.get(url);
+  url: string = "park";
+  park?: Park;
+
+  constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
+
+    this.url = baseUrl + this.url;
+  }
+  GetParkByParkCode(parkCode: string): Observable<any> {
+
+    let parkUrl: string = this.url + "parkCode=" + parkCode;
+    let result: Observable<any> = this.http.get(parkUrl);
     return result;
   }
 }
