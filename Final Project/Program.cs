@@ -15,11 +15,7 @@ namespace Final_Project
         {
             CreateHostBuilder(args).Build().Run();
 
-            Console.WriteLine("This line was added by Cullin.");
-            Console.WriteLine("This is another line added by Cullin" +
-                "for forking purposes.");
 
-            Console.WriteLine("It's yosha");
 
         }
 
