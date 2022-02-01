@@ -13,10 +13,11 @@ namespace Final_Project.Controllers
     public class ParkController : ControllerBase
     {
         ParkDAL dal = new ParkDAL();
-        [HttpGet]
-        public Park GetParkByParkCode()
+        [HttpGet("parkCode={parkCode}")]
+        public Park GetParkByParkCode(string parkCode)
         {
-            return dal.GetParkByParkCode("yell");
+
+            return dal.GetParkByParkCode(parkCode);
         }
 
     }

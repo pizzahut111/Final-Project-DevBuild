@@ -114,11 +114,11 @@ export enum Day {
 
 // Converts JSON strings to/from your types
 export class Convert {
-    public static toPost(json: string): Post {
+    public static toPost(json: string): Park {
         return JSON.parse(json);
     }
 
-    public static postToJson(value: Post): string {
+    public static postToJson(value: Park): string {
         return JSON.stringify(value);
     }
 }

@@ -9,15 +9,17 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
+import { ParkDetailComponent } from './park-detail/park-detail.component';
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     NavMenuComponent,
     HomeComponent,
     CounterComponent,
-    FetchDataComponent
-  ],
+    FetchDataComponent,
+      ParkDetailComponent
+   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
@@ -26,6 +28,7 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
+      { path: 'park-detail', component: ParkDetailComponent}
     ])
   ],
   providers: [],
