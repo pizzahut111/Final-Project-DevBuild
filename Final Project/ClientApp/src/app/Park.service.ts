@@ -17,7 +17,7 @@ export class ParkService {
   }
   GetParkByParkCode(parkCode: string): Observable<any> {
 
-    let parkUrl: string = this.url + "parkCode=" + parkCode;
+    let parkUrl: string = this.url + "/parkCode=" + parkCode;
     let result: Observable<any> = this.http.get(parkUrl);
     return result;
   }

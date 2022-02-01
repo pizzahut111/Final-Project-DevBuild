@@ -8,103 +8,103 @@ export interface Park {
     total?: string;
     limit?: string;
     start?: string;
-    data?:  Datum[];
+    data?: Datum[];
 }
 
 export interface Datum {
-    id?:             string;
-    url?:            string;
-    fullName?:       string;
-    parkCode?:       string;
-    description?:    string;
-    latitude?:       string;
-    longitude?:      string;
-    latLong?:        string;
-    activities?:     Activity[];
-    topics?:         Activity[];
-    states?:         string;
-    contacts?:       Contacts;
-    entranceFees?:   Entrance[];
+    id?: string;
+    url?: string;
+    fullName?: string;
+    parkCode?: string;
+    description?: string;
+    latitude?: string;
+    longitude?: string;
+    latLong?: string;
+    activities?: Activity[];
+    topics?: Activity[];
+    states?: string;
+    contacts?: Contacts;
+    entranceFees?: Entrance[];
     entrancePasses?: Entrance[];
-    fees?:           any[];
+    fees?: any[];
     directionsInfo?: string;
-    directionsUrl?:  string;
+    directionsUrl?: string;
     operatingHours?: OperatingHour[];
-    addresses?:      Address[];
-    images?:         Image[];
-    weatherInfo?:    string;
-    name?:           string;
-    designation?:    string;
+    addresses?: Address[];
+    images?: Image[];
+    weatherInfo?: string;
+    name?: string;
+    designation?: string;
 }
 
 export interface Activity {
-    id?:   string;
+    id?: string;
     name?: string;
 }
 
 export interface Address {
     postalCode?: string;
-    city?:       string;
-    stateCode?:  string;
-    line1?:      string;
-    type?:       string;
-    line3?:      string;
-    line2?:      string;
+    city?: string;
+    stateCode?: string;
+    line1?: string;
+    type?: string;
+    line3?: string;
+    line2?: string;
 }
 
 export interface Contacts {
-    phoneNumbers?:   PhoneNumber[];
+    phoneNumbers?: PhoneNumber[];
     emailAddresses?: EmailAddress[];
 }
 
 export interface EmailAddress {
-    description?:  string;
+    description?: string;
     emailAddress?: string;
 }
 
 export interface PhoneNumber {
     phoneNumber?: string;
     description?: string;
-    extension?:   string;
-    type?:        string;
+    extension?: string;
+    type?: string;
 }
 
 export interface Entrance {
-    cost?:        string;
+    cost?: string;
     description?: string;
-    title?:       string;
+    title?: string;
 }
 
 export interface Image {
-    credit?:  string;
-    title?:   string;
+    credit?: string;
+    title?: string;
     altText?: string;
     caption?: string;
-    url?:     string;
+    url?: string;
 }
 
 export interface OperatingHour {
-    exceptions?:    Exception[];
-    description?:   string;
+    exceptions?: Exception[];
+    description?: string;
     standardHours?: Hours;
-    name?:          string;
+    name?: string;
 }
 
 export interface Exception {
     exceptionHours?: Hours;
-    startDate?:      Date;
-    name?:           string;
-    endDate?:        Date;
+    startDate?: Date;
+    name?: string;
+    endDate?: Date;
 }
 
 export interface Hours {
     wednesday?: Day;
-    monday?:    Day;
-    thursday?:  Day;
-    sunday?:    Day;
-    tuesday?:   Day;
-    friday?:    Day;
-    saturday?:  Day;
+    monday?: Day;
+    thursday?: Day;
+    sunday?: Day;
+    tuesday?: Day;
+    friday?: Day;
+    saturday?: Day;
 }
 
 export enum Day {
