@@ -11,7 +11,7 @@ namespace Final_Project.Models
     public class ParkDAL
     {
         string apiKey = "&api_key=dD5Z8MilCF87nuaBngedmFcF1vDCl2hqdblh89yh";
-        public List<Park> GetAllParks()
+        public Park GetAllParks()
         {
             string url = "https://developer.nps.gov/api/v1/parks?&limit=465" + apiKey;
             HttpWebRequest request = WebRequest.CreateHttp(url);
@@ -20,7 +20,7 @@ namespace Final_Project.Models
             string JSON = rd.ReadToEnd();
             rd.Close();
             
-            List<Park> pList = JsonConvert.DeserializeObject<List<Park>>(JSON);
+            Park pList = JsonConvert.DeserializeObject<Park>(JSON);
             return pList;
 
         }

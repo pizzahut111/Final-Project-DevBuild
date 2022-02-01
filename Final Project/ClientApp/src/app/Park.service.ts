@@ -13,7 +13,7 @@ parks?: Park[] = [];
 constructor(private http:HttpClient, @Inject('BASE_URL') baseURL: string) { 
 this.url = baseURL + this.url;
 }
-GetParks():Observable<Park[]>{
+GetParks():Observable<Park>{
   let apiurl: string = this.url;
   let result : Observable<any> = this.http.get(apiurl);
   return result;
