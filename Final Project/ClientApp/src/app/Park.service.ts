@@ -9,12 +9,18 @@ import { Park } from './Park';
 export class ParkService {
 url: string = "Park";
 park?: Park;
-constructor(private http:HttpClient) { 
-
+parks?: Park[] = [];
+constructor(private http:HttpClient, @Inject('BASE_URL') baseURL: string) { 
+this.url = baseURL + this.url;
 }
-GetParkByParkCode(parkCode:string):Observable<Object>{
-    let url: string = "https://developer.nps.gov/api/v1/parks?parkCode=yell&api_key=dD5Z8MilCF87nuaBngedmFcF1vDCl2hqdblh89yh";
-    let result : Observable<any> = this.http.get(url);
+GetParks():Observable<Park[]>{
+  let apiurl: string = this.url;
+  let result : Observable<any> = this.http.get(apiurl);
+  return result;
+}
+GetParkByParkCode(parkCode:string):Observable<any>{
+    let apiurl: string = this.url+"/parkcode="+parkCode;
+    let result : Observable<any> = this.http.get(apiurl);
     return result;
   }
 }

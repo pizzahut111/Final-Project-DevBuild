@@ -19,7 +19,11 @@ namespace Final_Project.Controllers
 
             return dal.GetParkByParkCode(parkCode);
         }
-
+        [HttpGet]
+        public List<Park> GetAllParks()
+        {
+            return dal.GetAllParks();
+        }
     }
 
 }
