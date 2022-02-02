@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Park } from '../Park';
 
 @Component({
   selector: 'app-counter-component',
@@ -6,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class CounterComponent {
   public currentCount = 0;
-
+  
   public incrementCounter() {
     this.currentCount++;
   }

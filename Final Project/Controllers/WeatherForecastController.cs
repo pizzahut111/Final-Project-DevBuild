@@ -1,11 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Final_Project;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Final_Project.Controllers
+namespace Initial_Full_Stack_Project.Controllers
 {
     [ApiController]
     [Route("[controller]")]
