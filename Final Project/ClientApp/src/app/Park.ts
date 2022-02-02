@@ -17,24 +17,24 @@ export interface Datum {
     fullName?:       string;
     parkCode?:       string;
     description?:    string;
-    latitude?:       string;
-    longitude?:      string;
-    latLong?:        string;
+    //latitude?:       string;
+    //longitude?:      string;
+    //latLong?:        string;
     activities?:     Activity[];
-    topics?:         Activity[];
+    //topics?:         Activity[];
     states?:         string;
-    contacts?:       Contacts;
+    //contacts?:       Contacts;
     entranceFees?:   Entrance[];
-    entrancePasses?: Entrance[];
-    fees?:           any[];
-    directionsInfo?: string;
-    directionsUrl?:  string;
-    operatingHours?: OperatingHour[];
-    addresses?:      Address[];
+    //entrancePasses?: Entrance[];
+    //fees?:           any[];
+    //directionsInfo?: string;
+    //directionsUrl?:  string;
+    //operatingHours?: OperatingHour[];
+    //addresses?:      Address[];
     images?:         Image[];
-    weatherInfo?:    string;
-    name?:           string;
-    designation?:    string;
+    //weatherInfo?:    string;
+    //name?:           string;
+    //designation?:    string;
 }
 
 export interface Activity {

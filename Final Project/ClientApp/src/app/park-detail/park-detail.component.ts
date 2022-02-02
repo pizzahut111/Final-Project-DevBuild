@@ -24,7 +24,8 @@ parks?: Park[] = [];
     // );
 
     this.parkService.GetParks().subscribe(
-      (response:any)=> {console.log(response);
+      (response: any) => {
+        console.log(response);
         let json = Convert.parkArrayToJson(response);
         this.parks = Convert.toParkArray(json);
         console.log(this.parks);
