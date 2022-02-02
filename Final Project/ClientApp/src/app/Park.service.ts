@@ -14,7 +14,7 @@ constructor(private http:HttpClient, @Inject('BASE_URL') baseURL: string) {
 this.url = baseURL + this.url;
 }
 GetParks():Observable<any>{
-  let apiurl: string = this.url;
+  let apiurl: string = this.url+"/api";
   let result: Observable<any> = this.http.get(apiurl);
   return result;
 }
