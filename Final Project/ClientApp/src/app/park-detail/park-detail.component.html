@@ -1,7 +1,10 @@
 <p>
   park-detail works!
 </p>
-<div *ngFor="let a of data">
-<p>{{a.fullName}}</p>
+<div *ngIf="park && park.data">
+  <div *ngFor="let p of park.data">
+    <p>{{p.fullName}}</p>
 
-</div>
+  </div>
+  </div>
+
