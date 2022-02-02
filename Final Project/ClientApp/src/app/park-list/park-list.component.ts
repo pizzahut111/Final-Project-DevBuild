@@ -3,12 +3,12 @@ import { Convert, Park } from '../Park';
 import { ParkService } from '../Park.service';
 
 @Component({
-  selector: 'app-park-detail',
-  templateUrl: './park-detail.component.html',
-  styleUrls: ['./park-detail.component.css'],
+  selector: 'app-park-list',
+  templateUrl: './park-list.component.html',
+  styleUrls: ['./park-list.component.css'],
   providers: [ParkService]
 })
-export class ParkDetailComponent implements OnInit {
+export class ParkListComponent implements OnInit {
 @Input() parkCode: string;
 
 park?: Park;
