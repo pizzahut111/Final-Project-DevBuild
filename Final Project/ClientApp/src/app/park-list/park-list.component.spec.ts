@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { ParkDetailComponent } from './park-detail.component';
+import { ParkListComponent } from './park-list.component';
 
-describe('ParkDetailComponent', () => {
-  let component: ParkDetailComponent;
-  let fixture: ComponentFixture<ParkDetailComponent>;
+describe('ParkListComponent', () => {
+  let component: ParkListComponent;
+  let fixture: ComponentFixture<ParkListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ParkDetailComponent ]
+      declarations: [ParkListComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ParkDetailComponent);
+    fixture = TestBed.createComponent(ParkListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
