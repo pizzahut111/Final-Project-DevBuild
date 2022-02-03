@@ -1,0 +1,22 @@
+<div>
+  <h4>{{singlePark.fullName}}</h4>
+</div>
+<div>
+  <p><a href="{{singlePark.url}}">{{singlePark.name}} Official Website</a></p>
+</div>
+<div>
+  <img src="{{singlePark.images[0].url}}" width="400" height="auto"/>
+</div>
+<div>
+  <p>{{singlePark.description}}</p>
+</div>
+<div>
+  <p>Entrance fees:</p>
+  
+</div>
+<div>
+  <h4>Park Activities:</h4>
+  <div *ngFor="let a of singlePark.activities">
+    <h6>{{a.name}}</h6>
+  </div>
+</div>
