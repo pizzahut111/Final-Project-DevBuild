@@ -22,6 +22,7 @@ namespace Final_Project.Controllers
         [HttpGet("api")]
         public Park GetAllParks()
         {
+            //dal.AddParksToDB();
             return dal.GetAllParks();
         }
     }
