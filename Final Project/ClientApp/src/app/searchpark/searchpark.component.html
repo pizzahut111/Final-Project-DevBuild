@@ -5,3 +5,8 @@
 
 <button (click)="SearchPark()">Search</button>
 
+<div *ngIf="searchedpark">
+  <div *ngFor="let p of searchedpark">
+    <p>{{p.fullName}}</p>
+  </div>
+  </div>
