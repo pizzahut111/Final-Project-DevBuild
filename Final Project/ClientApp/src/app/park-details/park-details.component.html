@@ -11,12 +11,30 @@
   <p>{{singlePark.description}}</p>
 </div>
 <div>
+  <h4>Weather</h4>
+  <p>{{singlePark.weatherInfo}}</p>
+</div>
+<div>
   <p>Entrance fees:</p>
+  
+  <div *ngIf="singlePark && singlePark.entranceFees">
+    <div *ngFor="let fee of singlePark.entranceFees">
+      
+          <p>{{fee.title}}: ${{fee.cost}}</p>
+          <p>{{fee.description}}</p>
+    </div>
+  </div>
+
   
 </div>
 <div>
   <h4>Park Activities:</h4>
-  <div *ngFor="let a of singlePark.activities">
-    <h6>{{a.name}}</h6>
+  <div> <!--This is a good candidate for flexbox or global formatting in styles.css -->
+    <table>
+      <div *ngFor="let a of singlePark.activities">
+        <td style="border-bottom: 2px solid black">{{a.name}}</td>
+      </div>
+    </table>
   </div>
+
 </div>
