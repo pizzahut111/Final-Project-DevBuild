@@ -229,3 +229,7 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+
+#config files
+.vs/Final Project/v16/.suo
+.vs/Final Project/DesignTimeBuild/.dtbcache.v2
