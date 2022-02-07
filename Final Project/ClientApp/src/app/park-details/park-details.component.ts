@@ -9,10 +9,10 @@ import { ParkService } from '../Park.service';
   providers: [ParkService]
 })
 export class ParkDetailsComponent implements OnInit {
-@Input() parkCode: string;
+//@Input() parkCode: string;
 //delete the following once testing is complete (and un-comment the input above - 
 //that will be passed in by other views when the list is generated):
-parkCode1 = "zion";
+parkCode = "azru";
 
 park: Park;
 // singlePark?: Park["data"];
@@ -20,21 +20,19 @@ park: Park;
 singlePark?: Park["data"][0];
 
   constructor(private parkService: ParkService) { 
+    this.parkService.GetParkByParkCode(this.parkCode).subscribe(
+      (response:any)=> {
+        //console.log(response);
+        let json = Convert.parkToJson(response);
+        this.park = Convert.toPark(json);
+        this.singlePark = this.park.data[0];
+        //console.log(this.singlePark);
+      }
+    );
 
   }
 
   ngOnInit() {
-    this.parkService.GetParkByParkCode(this.parkCode).subscribe(
-      (response:any)=> {
-        console.log(response);
-        let json = Convert.parkToJson(response);
-        this.park = Convert.toPark(json);
-        //console.log(this.parkCode);
-        this.singlePark = this.park.data[0];
-        console.log(this.singlePark);
-      }
-    );
-
   }
 
 }
