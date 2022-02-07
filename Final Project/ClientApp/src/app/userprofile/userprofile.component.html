@@ -1,1 +1,13 @@
-<p>userprofile works!</p>
+<p>if logged in:
+    - user info displayed
+    - user logout button
+    - if user_parks has data, show list of parks (can we use code from search or park list?)
+    - if no parks, tell user their list is empty, route to search or list
+</p>
+<p>if not logged in:
+    - show form to input user name and password
+    - call user table to confirm if user exists AND if pwd match
+    - if password/user matches, update boolean isLoggedIn on the DB table, flip user screen to above
+    - if user/pwd do not match, notify user to try again.
+    - have a Create User button that routes the user to the Create User component
+</p>
