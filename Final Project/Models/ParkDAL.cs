@@ -45,7 +45,7 @@ namespace Final_Project.Models
             Park p = GetAllParks();
             foreach (var data in p.data)
             {
-                string sql = $"insert into parkdetails values(0,'{data.parkCode}','{data.states}')";
+                string sql = $"insert into parkdetails values('{data.parkCode}','{data.states}')";
                 using (var connect = new MySqlConnection(Secret.Connection))
                 {
                     connect.Open();
