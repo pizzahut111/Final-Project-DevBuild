@@ -26,4 +26,19 @@ export class UserprofileComponent implements OnInit {
   ngOnInit() {
   }
 
+
+
+  // LogOutUser(userId: number){
+
+  //   this.userService.UpdateUser(userId).subscribe(
+  //     (response: any) => { this.user = response;
+  //     let json = Convert.userToJson(response);
+  //     this.user = Convert.toUser(json);
+  //     console.log(response);
+  //     console.log(this.user.isLoggedIn);
+  //     }
+  //   );
+  //   this.user.isLoggedIn=false;
+  //   this.userService.UpdateUser(userId, this.user)
+  // }
 }
