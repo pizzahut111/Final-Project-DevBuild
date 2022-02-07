@@ -45,7 +45,8 @@ namespace Final_Project.Models
                 $"Email='{newValues.Email}', " +
                 $"User_Name='{newValues.User_Name}', " +
                 $"Password='{newValues.Password}', " +
-                $"Home_state_code='{newValues.Home_state_code}' " +
+                $"Home_state_code='{newValues.Home_state_code}'," +
+                $"isLoggedIn={newValues.IsLoggedIn} "+ 
                 $"where id={id}";
             using (var connect = new MySqlConnection(Secret.Connection))
             {
@@ -56,7 +57,7 @@ namespace Final_Project.Models
         }
         public void CreateUser(User newValues)
         {
-            string sql = $"insert into users values(0, '{newValues.First_Name}', '{newValues.Last_Name}', '{newValues.Email}', '{newValues.User_Name}', '{newValues.Password}', '{newValues.Home_state_code}')";
+            string sql = $"insert into users values(0, '{newValues.First_Name}', '{newValues.Last_Name}', '{newValues.Email}', '{newValues.User_Name}', '{newValues.Password}', '{newValues.Home_state_code}',{newValues.IsLoggedIn})";
             using (var connect = new MySqlConnection(Secret.Connection))
             {
                 connect.Open();

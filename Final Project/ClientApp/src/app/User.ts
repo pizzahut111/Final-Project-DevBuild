@@ -6,4 +6,5 @@ export interface User{
     User_Name?: string;
     Password?: string;
     Home_state_code?: string;
+    IsLoggedIn?: boolean;
 }

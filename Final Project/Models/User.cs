@@ -16,5 +16,6 @@ namespace Final_Project.Models
         public string User_Name { get; set; }
         public string Password { get; set; }
         public string Home_state_code { get; set; }
+        public bool IsLoggedIn { get; set; }
     }
 }
