@@ -38,4 +38,21 @@ export class SearchparkComponent implements OnInit {
     //  (response: any) => { location.reload() }
     //);
   }
+  ExpandDetails(parkCode: string){
+    //let searchPanel = document.getElementById("search"+parkCode);
+    let detailPanel = document.getElementById("detail"+parkCode);
+
+    if (detailPanel.style.display === "none")
+    {
+      detailPanel.style.display = "inherit";
+      //searchPanel.style.display = "none";
+      //console.log("does this display details?");
+    }
+    else if (detailPanel.style.display === "" || detailPanel.style.display === "inherit")
+    {
+      detailPanel.style.display = "none";
+      //searchPanel.style.display = "inherit";
+      console.log("hiding display");
+    }
+  }
 }
