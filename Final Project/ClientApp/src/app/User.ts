@@ -1,12 +1,12 @@
 export interface User {
     id?: number;
-    First_Name?: string;
-    Last_Name?: string;
-    Email?: string;
-    User_Name?: string;
-    Password?: string;
-    Home_state_code?: string;
-    IsLoggedIn?: boolean;
+    first_Name?: string;
+    last_Name?: string;
+    email?: string;
+    user_Name?: string;
+    password?: string;
+    home_state_code?: string;
+    isLoggedIn?: boolean;
 }
 
 export class Convert {

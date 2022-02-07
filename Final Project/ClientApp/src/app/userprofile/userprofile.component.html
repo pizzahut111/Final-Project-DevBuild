@@ -1,5 +1,5 @@
 <p>if logged in:
-    - user info displayed
+    - user info displayed (check!)
     - user logout button
     - if user_parks has data, show list of parks (can we use code from search or park list?)
     - if no parks, tell user their list is empty, route to search or list
@@ -12,7 +12,19 @@
     - have a Create User button that routes the user to the Create User component
 </p>
 
-<h4>Y'all ready for this?</h4>
+<!-- <h4>Y'all ready for this?</h4>
 <div *ngFor="let user of users">
     <p>{{user.first_Name}}</p>
+</div> -->
+<div *ngFor="let u of users">
+    <div id="user{{u.id}}" *ngIf="u.isLoggedIn">
+    <p>Welcome {{u.first_Name}}!</p>
+        <!--<button (click)="LogOutUser(u.id)" >Log Out</button>-->
+
+
+    </div>
+    <div *ngIf="u.isLoggedIn===false">
+        <p> Please log in below!</p>
+        
+    </div>
 </div>
