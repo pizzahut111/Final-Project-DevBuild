@@ -2,12 +2,16 @@ import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from './User';
+import { Convert } from './User';
+import { ParkDetailsComponent } from './park-details/park-details.component';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
     url: string = "User";
-    loggedinuser?: User;
+    //loggedInUser?: User;
     users?: User[] = [];
+
+    
 
     constructor(private http: HttpClient, @Inject('BASE_URL') baseURL: string) {
         this.url = baseURL + this.url;
@@ -25,5 +29,27 @@ export class UserService {
     UpdateUser(userId: number, user:User){
         return this.http.put(this.url+"/updateUser="+userId, user);
     }
+    GetLoggedInUser():User{
+        //Get logged in user to then fill out loggedInUser variable
+        let userSearch: User;
+        this.http.get(this.url+"/getLoggedInUser").subscribe(
+            (response: any) => {
+                console.log("getting logged in user");
+                let json = Convert.userToJson(response);
+                userSearch = Convert.toUser(json);
+                console.log(userSearch);
+            }
+        );
+            return userSearch;
+        
+        
+    }
+    AddParkToUserList(parkCode: string, user: User){
 
+        console.log(user);
+        console.log(parkCode);
+        
+        //this.http.post(this.url+"/addUserPark="+parkCode, user);
+        //console.log(this.loggedInUser.email);
+    }
 }

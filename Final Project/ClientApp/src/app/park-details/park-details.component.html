@@ -1,9 +1,12 @@
 <div>
   <h4>{{singlePark.fullName}}</h4>
+  <button (click)="AddParkToUserList(singlePark.parkCode)">Add to List</button>  
 </div>
+
 <div>
   <p><a href="{{singlePark.url}}">{{singlePark.name}} Official Website</a></p>
 </div>
+
 <div>
   <img class="img" src="{{singlePark.images[0].url}}" height="400px" width="auto"/>
 </div>

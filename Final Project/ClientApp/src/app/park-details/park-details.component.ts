@@ -1,12 +1,14 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Convert, Park } from '../Park';
 import { ParkService } from '../Park.service';
+import { User } from '../User';
+import { UserService } from '../User.service';
 
 @Component({
   selector: 'app-park-details',
   templateUrl: './park-details.component.html',
   styleUrls: ['./park-details.component.css'],
-  providers: [ParkService]
+  providers: [ParkService, UserService]
 })
 export class ParkDetailsComponent implements OnInit {
 @Input() parkCode: string;
@@ -16,10 +18,10 @@ parkCode1 = "zion";
 
 park: Park;
 // singlePark?: Park["data"];
-
+user: User;
 singlePark?: Park["data"][0];
 
-  constructor(private parkService: ParkService) { 
+  constructor(private parkService: ParkService, private userService: UserService) { 
 
   }
 
@@ -34,7 +36,17 @@ singlePark?: Park["data"][0];
         console.log(this.singlePark);
       }
     );
+//DELETE THIS IF IT DOESNT WORK
 
+this.user = this.userService.GetLoggedInUser();
+
+//
+  }
+  AddParkToUserList(parkCode:string){
+    //this.userService.GetLoggedInUser();
+    
+    this.userService.AddParkToUserList(parkCode, this.user);
+    
   }
 
 }
