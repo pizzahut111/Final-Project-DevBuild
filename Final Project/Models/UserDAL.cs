@@ -9,6 +9,7 @@ namespace Final_Project.Models
 {
     public class UserDAL
     {
+        
         public List<User> GetAllUsers()
         {
             using (var connect = new MySqlConnection(Secret.Connection))
@@ -83,6 +84,23 @@ namespace Final_Project.Models
                 connect.Open();
                 connect.Query<User>(sql); //we dont need anything extra here, since we arent returning anything
                 connect.Close();
+            }
+        }
+        public User GetLoggedInUser()
+        {
+            using (var connect = new MySqlConnection(Secret.Connection))
+            {
+                string sql = "select * from users where isLoggedIn=true";
+                connect.Open();
+                User loggedInUser = connect.Query<User>(sql).ToList().First();
+                connect.Close();
+
+                //if (loggedInUser == null)
+                //{
+                //    loggedInUser.First_Name = "No one is logged in!";
+                //}
+               
+                return loggedInUser;
             }
         }
     }

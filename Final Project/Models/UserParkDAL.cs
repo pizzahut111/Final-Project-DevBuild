@@ -22,14 +22,17 @@ namespace Final_Project.Models
             }
         }        
        
-        public void AddUserParks(UserPark newValues)
+        public void AddUserParks(User newValues, string parkCode)
         {
-            string sql = $"insert into users_parks values(0, {newValues.UserId}, '{newValues.ParkCode}')";
-            using (var connect = new MySqlConnection(Secret.Connection))
-            {
-                connect.Open();
-                connect.Query<UserPark>(sql);
-                connect.Close();
+            if (newValues != null)
+            { 
+                string sql = $"insert into users_parks values(0, {newValues.id}, '{parkCode}')";
+                using (var connect = new MySqlConnection(Secret.Connection))
+                {
+                    connect.Open();
+                    connect.Query<UserPark>(sql);
+                    connect.Close();
+                }
             }
         }
         public void DeleteUserParks(string parkcode, int userid)

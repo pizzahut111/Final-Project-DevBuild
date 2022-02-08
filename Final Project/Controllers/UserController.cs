@@ -9,9 +9,11 @@ namespace Final_Project.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class UserController: ControllerBase
+    public class UserController : ControllerBase
     {
         UserDAL ud = new UserDAL();
+        UserParkDAL upd = new UserParkDAL();
+
         [HttpGet("users")]
         public List<User> GetUsers()
         {
@@ -19,13 +21,13 @@ namespace Final_Project.Controllers
             return users;
         }
         [HttpGet("userId={userId}")]
-        public User GetUserByID(int userId) 
+        public User GetUserByID(int userId)
         {
             User u = ud.GetUserByID(userId);
             return u;
         }
         [HttpPut("updateUser={userId}")]
-        public void UpdateUser(int userId) 
+        public void UpdateUser(int userId)
         {
             User original = ud.GetUserByID(userId);
 
@@ -59,6 +61,17 @@ namespace Final_Project.Controllers
             //}
             original.IsLoggedIn = false;
             ud.LogOutUser(userId);
+        }
+        [HttpPost("addUserPark={parkCode}")]
+        public void AddUserPark(string parkCode, User loggedInUser)
+        {
+          upd.AddUserParks(loggedInUser, parkCode);
+        }
+
+        [HttpGet("getLoggedInUser")]
+        public User GetLoggedInUser()
+        {
+            return ud.GetLoggedInUser();
         }
 
     }
