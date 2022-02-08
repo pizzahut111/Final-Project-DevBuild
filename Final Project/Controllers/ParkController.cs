@@ -13,6 +13,7 @@ namespace Final_Project.Controllers
     public class ParkController : ControllerBase
     {
         ParkDAL dal = new ParkDAL();
+        UserParkDAL userParkDAL = new UserParkDAL();
         [HttpGet("parkCode={parkCode}")]
         public Park GetParkByParkCode(string parkCode)
         {
@@ -23,8 +24,10 @@ namespace Final_Project.Controllers
         public Park GetAllParks()
         {
             //dal.AddParksToDB();
+            //userParkDAL.GetUserParks(2);
             return dal.GetAllParks();
         }
+
     }
 
 }
