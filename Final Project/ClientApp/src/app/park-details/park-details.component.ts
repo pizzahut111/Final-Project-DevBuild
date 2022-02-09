@@ -28,25 +28,25 @@ singlePark?: Park["data"][0];
   ngOnInit() {
     this.parkService.GetParkByParkCode(this.parkCode).subscribe(
       (response:any)=> {
-        console.log(response);
+        //console.log(response);
         let json = Convert.parkToJson(response);
         this.park = Convert.toPark(json);
         //console.log(this.parkCode);
         this.singlePark = this.park.data[0];
-        console.log(this.singlePark);
+        //console.log(this.singlePark);
       }
     );
-//DELETE THIS IF IT DOESNT WORK
 
-this.user = this.userService.GetLoggedInUser();
 
-//
   }
   AddParkToUserList(parkCode:string){
-    //this.userService.GetLoggedInUser();
-    
-    this.userService.AddParkToUserList(parkCode, this.user);
-    
+    let loggedInUser:User = this.userService.GetLoggedInUser();
+    console.log(loggedInUser.password);
+    if(loggedInUser!=null)
+    {
+
+    this.userService.AddParkToUserList(parkCode, loggedInUser);
+    }
   }
 
 }
