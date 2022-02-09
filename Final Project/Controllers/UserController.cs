@@ -77,6 +77,7 @@ namespace Final_Project.Controllers
         public bool ValidateUser(string username, string password)
         {
             return ud.ValidateUser(username, password);
+            
         }
     }
 }
