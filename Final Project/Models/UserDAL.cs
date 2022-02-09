@@ -9,7 +9,7 @@ namespace Final_Project.Models
 {
     public class UserDAL
     {
-        public int loggedInUserId { get; set; } 
+        public static int loggedInUserId = -1;
 
         public List<User> GetAllUsers()
         {
@@ -90,11 +90,11 @@ namespace Final_Project.Models
         public User GetLoggedInUser()
         {
 
-            if (loggedInUserId != 0)
+            if (loggedInUserId != -1)
             {
                 using (var connect = new MySqlConnection(Secret.Connection))
                 {
-                    string sql = "select * from users where isloggedin=true";
+                    string sql = "select * from users where id=" + loggedInUserId;
                     connect.Open();
                     User loggedInUser = connect.Query<User>(sql).ToList().First();
                     connect.Close();
@@ -106,9 +106,13 @@ namespace Final_Project.Models
 
                     return loggedInUser;
                 }
+
             }
-            User nullUser = new User();
-            return nullUser;
+            else
+            {
+                User nullUser = new User();
+                return nullUser;
+            }
         }
         //Need a method to first look up all users, and compare the username that we pass in from frontend.
         //If username is found, compare password from FE.
