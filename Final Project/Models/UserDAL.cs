@@ -9,7 +9,8 @@ namespace Final_Project.Models
 {
     public class UserDAL
     {
-        
+        public static int loggedInUserId = -1;
+
         public List<User> GetAllUsers()
         {
             using (var connect = new MySqlConnection(Secret.Connection))
@@ -102,6 +103,38 @@ namespace Final_Project.Models
                
                 return loggedInUser;
             }
+        }
+        //Need a method to first look up all users, and compare the username that we pass in from frontend.
+        //If username is found, compare password from FE.
+        //If all matches, 
+        //Change our logged in userID in BE (above - called loggedInUserId)
+        //Update the DB to remove any existing isLoggedIn=true on the list, and update the current user's isLoggedIn bool to true.
+        //Return true, meaning login was successful
+
+        public bool ValidateUser(string username, string password)
+        {
+            List<User> allUsers = GetAllUsers();
+
+            foreach (User u in allUsers) 
+            {
+                if (u.User_Name.ToLower() == username.ToLower())
+                {
+                    if (u.Password == password)
+                    {
+                        u.IsLoggedIn = true;
+                        UpdateUser(u.id, u);
+                        //sql statement to update this particular user's loggedIn bool - build a logout method to use here, 
+                        //or just write a sql statement to flip all other bools to false?  How do we know which users to flip?
+                        //can we use a where statement in the sql string to say something like "where userid!=u.id"?
+                        
+
+                        return true;
+                    }
+                    return false;
+                }
+                return false;
+            }
+            return false;
         }
     }
 }

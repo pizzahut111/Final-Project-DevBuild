@@ -65,7 +65,7 @@ namespace Final_Project.Controllers
         [HttpPost("addUserPark={parkCode}")]
         public void AddUserPark(string parkCode, User loggedInUser)
         {
-          upd.AddUserParks(loggedInUser, parkCode);
+            upd.AddUserParks(loggedInUser, parkCode);
         }
 
         [HttpGet("getLoggedInUser")]
@@ -73,6 +73,10 @@ namespace Final_Project.Controllers
         {
             return ud.GetLoggedInUser();
         }
-
+        [HttpGet("loginu={username}p={password}")]
+        public bool ValidateUser(string username, string password)
+        {
+            return ud.ValidateUser(username, password);
+        }
     }
 }

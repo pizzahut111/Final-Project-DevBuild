@@ -12,6 +12,7 @@ export class UserprofileComponent implements OnInit {
 
   user?: User;
   users?: User[] = [];
+  validLogin: boolean;
 
   constructor(private userService: UserService) {
     this.userService.GetUsers().subscribe(
@@ -26,7 +27,14 @@ export class UserprofileComponent implements OnInit {
   ngOnInit() {
   }
 
+ValidateUser():boolean{
+let username:string = (<HTMLInputElement> document.getElementById("username")).value;
+let password:string = (<HTMLInputElement> document.getElementById("password")).value;
 
+this.validLogin= this.userService.ValidateUser(username, password);
+return this.validLogin;
+
+}
 
   // LogOutUser(userId: number){
 
