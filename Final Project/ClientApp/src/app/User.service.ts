@@ -52,4 +52,13 @@ export class UserService {
         //this.http.post(this.url+"/addUserPark="+parkCode, user);
         //console.log(this.loggedInUser.email);
     }
+    ValidateUser(username: string, password: string):boolean{
+        //change return type to bool once we see a valid response
+        let valid:boolean;
+        this.http.get(this.url+"/loginu="+username+"p="+password).subscribe(
+            (response:any) => {
+                valid = response;
+            });
+            return valid;
+    }
 }
