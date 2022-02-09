@@ -45,11 +45,8 @@ export class UserService {
         
     }
     AddParkToUserList(parkCode: string, user: User){
-
-        console.log(user);
-        console.log(parkCode);
         
-        //this.http.post(this.url+"/addUserPark="+parkCode, user);
+        this.http.post(this.url+"/addUserPark="+parkCode, user);
         //console.log(this.loggedInUser.email);
     }
     ValidateUser(username: string, password: string):boolean{

@@ -9,7 +9,7 @@ namespace Final_Project.Models
 {
     public class UserDAL
     {
-        public static int loggedInUserId = -1;
+        public int loggedInUserId { get; set; } 
 
         public List<User> GetAllUsers()
         {
@@ -89,20 +89,26 @@ namespace Final_Project.Models
         }
         public User GetLoggedInUser()
         {
-            using (var connect = new MySqlConnection(Secret.Connection))
-            {
-                string sql = "select * from users where isLoggedIn=true";
-                connect.Open();
-                User loggedInUser = connect.Query<User>(sql).ToList().First();
-                connect.Close();
 
-                //if (loggedInUser == null)
-                //{
-                //    loggedInUser.First_Name = "No one is logged in!";
-                //}
-               
-                return loggedInUser;
+            if (loggedInUserId != 0)
+            {
+                using (var connect = new MySqlConnection(Secret.Connection))
+                {
+                    string sql = "select * from users where isloggedin=true";
+                    connect.Open();
+                    User loggedInUser = connect.Query<User>(sql).ToList().First();
+                    connect.Close();
+
+                    //if (loggedInUser == null)
+                    //{
+                    //    loggedInUser.First_Name = "No one is logged in!";
+                    //}
+
+                    return loggedInUser;
+                }
             }
+            User nullUser = new User();
+            return nullUser;
         }
         //Need a method to first look up all users, and compare the username that we pass in from frontend.
         //If username is found, compare password from FE.
@@ -123,16 +129,23 @@ namespace Final_Project.Models
                     {
                         u.IsLoggedIn = true;
                         UpdateUser(u.id, u);
+                        loggedInUserId = u.id;
                         //sql statement to update this particular user's loggedIn bool - build a logout method to use here, 
                         //or just write a sql statement to flip all other bools to false?  How do we know which users to flip?
                         //can we use a where statement in the sql string to say something like "where userid!=u.id"?
-                        
+                        string sql = $"update users set isloggedin=false where id !={u.id}";
+                        using (var connect = new MySqlConnection(Secret.Connection))
+                        {
+                            connect.Open();
+                            connect.Query<User>(sql); 
+                            connect.Close();
+                        }
 
                         return true;
                     }
                     return false;
                 }
-                return false;
+                
             }
             return false;
         }
