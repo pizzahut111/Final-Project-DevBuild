@@ -12,7 +12,7 @@ namespace Final_Project.Models
 {
     public class ParkDAL
     {
-        string apiKey = "&api_key=dD5Z8MilCF87nuaBngedmFcF1vDCl2hqdblh89yh";
+        string apiKey = "&api_key=jLb8WaFMk8oQHZ1pmIq11MtsKRbkH9SOV80hqUrr";
         public Park GetAllParks()
         {
             string url = "https://developer.nps.gov/api/v1/parks?&limit=465" + apiKey;
