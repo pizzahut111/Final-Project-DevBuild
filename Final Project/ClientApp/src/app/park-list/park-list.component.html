@@ -1,10 +1,14 @@
-<!--<p>
-  park-detail works!
-</p>-->
+
 <div *ngIf="park && park.data">
   <div *ngFor="let p of park.data">
+    <div id="list{{p.parkCode}}" (click)="ExpandDetails(p.parkCode)">
     <p>{{p.fullName}}</p>
+  </div>
+      <div>
+        <app-park-details id="detail{{p.parkCode}}" style="display: none;" [parkCode]=p.parkCode></app-park-details>
+      </div>
+  </div>
+</div>
+  
 
-  </div>
-  </div>
 
