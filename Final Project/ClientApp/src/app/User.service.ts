@@ -2,7 +2,8 @@ import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from './User';
-import { Convert } from './User';
+import { Convert } from './Park';
+
 import { ParkDetailsComponent } from './park-details/park-details.component';
 
 @Injectable({ providedIn: 'root' })
@@ -10,7 +11,7 @@ export class UserService {
     url: string = "User";
     //loggedInUser?: User;
     users?: User[] = [];
-
+    loggedInUser?: User;
     
 
     constructor(private http: HttpClient, @Inject('BASE_URL') baseURL: string) {
@@ -29,24 +30,26 @@ export class UserService {
     UpdateUser(userId: number, user:User){
         return this.http.put(this.url+"/updateUser="+userId, user);
     }
-    GetLoggedInUser():User{
+    GetLoggedInUser(cb: any) {
         //Get logged in user to then fill out loggedInUser variable
         let userSearch: User;
+
         this.http.get(this.url+"/getLoggedInUser").subscribe(
             (response: any) => {
-                console.log("getting logged in user");
-                let json = Convert.userToJson(response);
-                userSearch = Convert.toUser(json);
-                console.log(userSearch);
+                console.log("***getting logged in user***");
+                console.log(response);
+                cb(response.full_Name);
             }
         );
-            return userSearch;
+            //this.loggedInUser = userSearch;
+
         
         
     }
     AddParkToUserList(parkCode: string, user: User){
         
         this.http.post(this.url+"/addUserPark="+parkCode, user);
+        console.log("User is NOT null!");
         //console.log(this.loggedInUser.email);
     }
     ValidateUser(username: string, password: string):boolean{

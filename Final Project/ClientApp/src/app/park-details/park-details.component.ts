@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+
 import { Convert, Park } from '../Park';
 import { ParkService } from '../Park.service';
 import { User } from '../User';
@@ -16,9 +17,10 @@ export class ParkDetailsComponent implements OnInit {
 //that will be passed in by other views when the list is generated):
 parkCode1 = "zion";
 
+user: User;
 park: Park;
 // singlePark?: Park["data"];
-user: User;
+//loggedInUser: User;
 singlePark?: Park["data"][0];
 
   constructor(private parkService: ParkService, private userService: UserService) { 
@@ -28,25 +30,32 @@ singlePark?: Park["data"][0];
   ngOnInit() {
     this.parkService.GetParkByParkCode(this.parkCode).subscribe(
       (response:any)=> {
-        //console.log(response);
+        
         let json = Convert.parkToJson(response);
         this.park = Convert.toPark(json);
-        //console.log(this.parkCode);
+        
         this.singlePark = this.park.data[0];
-        //console.log(this.singlePark);
+        
       }
     );
-
+    //this doesnt work
+    //this.user = this.userService.GetLoggedInUser();
 
   }
   AddParkToUserList(parkCode:string){
-    let loggedInUser:User = this.userService.GetLoggedInUser();
-    console.log(loggedInUser.password);
-    if(loggedInUser!=null)
-    {
-
-    this.userService.AddParkToUserList(parkCode, loggedInUser);
-    }
+    this.userService.GetLoggedInUser(
+      (loggedInUser) => {
+        console.log(loggedInUser);
+      
+        // if(this.user!=null)
+        // {
+          console.log("are we going into this section of the code?"+loggedInUser);
+        this.userService.AddParkToUserList(parkCode, loggedInUser);
+    
+      }
+    );
+    
+    // }
   }
 
 }
