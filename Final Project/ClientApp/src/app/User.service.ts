@@ -5,6 +5,7 @@ import { User } from './User';
 import { Convert } from './Park';
 
 import { ParkDetailsComponent } from './park-details/park-details.component';
+import { UserPark } from './UserPark';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
@@ -12,7 +13,7 @@ export class UserService {
     //loggedInUser?: User;
     users?: User[] = [];
     loggedInUser?: User;
-    
+
 
     constructor(private http: HttpClient, @Inject('BASE_URL') baseURL: string) {
         this.url = baseURL + this.url;
@@ -38,7 +39,7 @@ export class UserService {
             (response: any) => {
                 console.log("***getting logged in user***");
                 console.log(response);
-                cb(response.full_Name);
+                cb(response);
             }
         );
             //this.loggedInUser = userSearch;
@@ -47,9 +48,16 @@ export class UserService {
         
     }
     AddParkToUserList(parkCode: string, user: User){
-        
+        // let userPark: UserPark;
+        // userPark.userId = 4;
+        // console.log();
+        // userPark.userId = user.id;
+        // userPark.parkCode = parkCode;
+
         this.http.post(this.url+"/addUserPark="+parkCode, user);
-        console.log("User is NOT null!");
+        console.log(this.url+"/addUserPark="+parkCode, user.email);
+        
+        
         //console.log(this.loggedInUser.email);
     }
     ValidateUser(username: string, password: string):boolean{

@@ -63,9 +63,9 @@ namespace Final_Project.Controllers
             ud.LogOutUser(userId);
         }
         [HttpPost("addUserPark={parkCode}")]
-        public void AddUserPark(string parkCode, User loggedInUser)
+        public void AddUserPark(string parkCode, User user)
         {
-            upd.AddUserParks(loggedInUser, parkCode);
+            upd.AddUserParks(parkCode, user);
         }
 
         [HttpGet("getLoggedInUser")]

@@ -49,7 +49,7 @@ singlePark?: Park["data"][0];
       
         // if(this.user!=null)
         // {
-          console.log("are we going into this section of the code?"+loggedInUser);
+          
         this.userService.AddParkToUserList(parkCode, loggedInUser);
     
       }
