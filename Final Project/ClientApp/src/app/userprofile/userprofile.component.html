@@ -18,20 +18,25 @@
     </div>
 
 </div>-->
-<div>
-    <h4>Please Login Below</h4>
-</div>
-<div id = "loginInputs">
-    <p>User Name:</p>
-    <input type="text" id="username" />
-    <p>Password</p>
-    <input type="password" id="password" />
-    <button (click)="ValidateUser()">Login</button>
+<div *ngIf="loggedInUser.id===0">
+    <div>
+        <h4>Please Login Below</h4>
+    </div>
+    <div id = "loginInputs">
+        <p>User Name:</p>
+        <input type="text" id="username" />
+        <p>Password</p>
+        <input type="password" id="password" />
+        <button (click)="ValidateUser()">Login</button>
     <!--<div if the method above returns true, then refresh and run this page again 
     - if false, display a popup message saying that isnt a valid login></div>-->
+    </div>
 </div>
-<div>
-    <p>validLogin</p>
+<div *ngIf="loggedInUser.id>0">
+    <p>Welcome {{loggedInUser.first_Name}}!</p>
+<!--Add User Park table here!-->
+<button (click)="LogOutUser(loggedInUser)" >Log Out</button>
+<!--refresh page here too-->
 </div>
 <div *ngIf="validLogin === false">
     <p>YOU FOOL!  Wrong password or username!</p>

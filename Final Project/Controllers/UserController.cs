@@ -26,10 +26,10 @@ namespace Final_Project.Controllers
             User u = ud.GetUserByID(userId);
             return u;
         }
-        [HttpPut("updateUser={userId}")]
-        public void UpdateUser(int userId)
-        {
-            User original = ud.GetUserByID(userId);
+        //[HttpPut("updateUser={userId}")]
+        //public void UpdateUser(int userId)
+        //{
+        //    User original = ud.GetUserByID(userId);
 
             //if (userUpdated.First_Name == null || userUpdated.First_Name == "")
             //{
@@ -59,9 +59,9 @@ namespace Final_Project.Controllers
             //{
             //     original.IsLoggedIn = userUpdated.IsLoggedIn;
             //}
-            original.IsLoggedIn = false;
-            ud.LogOutUser(userId);
-        }
+        //    original.IsLoggedIn = false;
+        //    ud.LogOutUser(userId);
+        //}
         [HttpPost("addUserPark={parkCode}")]
         public void AddUserPark(string parkCode, User user)
         {
@@ -78,6 +78,11 @@ namespace Final_Project.Controllers
         {
             return ud.ValidateUser(username, password);
             
+        }
+        [HttpPut("logout")]
+        public void LogOutUser (User u)
+        {
+            ud.LogOutUser(u);
         }
     }
 }
