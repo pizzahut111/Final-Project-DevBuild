@@ -48,7 +48,7 @@ namespace Final_Project.Models
         {
             using (var connect = new MySqlConnection(Secret.Connection))
             {
-                string sql = "select parkcode from users_parks where UserId=" + userId;
+                string sql = "select distinct parkcode from users_parks where UserId=" + userId;
                 connect.Open();
                 List<string> allParkcodes = connect.Query<string>(sql).ToList();
                 connect.Close();
