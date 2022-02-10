@@ -15,9 +15,10 @@ import { PlanningtipsComponent } from './planningtips/planningtips.component';
 import { SearchparkComponent } from './searchpark/searchpark.component';
 import { TopfiveComponent } from './topfive/topfive.component';
 import { UserprofileComponent } from './userprofile/userprofile.component';
+import { UserFavoritesComponent } from './user-favorites/user-favorites.component';
 
 @NgModule({
-  declarations: [		
+  declarations: [			
     AppComponent,
     NavMenuComponent,
     HomeComponent,
@@ -28,7 +29,8 @@ import { UserprofileComponent } from './userprofile/userprofile.component';
     PlanningtipsComponent,
     SearchparkComponent,
     TopfiveComponent,
-    UserprofileComponent
+    UserprofileComponent,
+      UserFavoritesComponent
    ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
