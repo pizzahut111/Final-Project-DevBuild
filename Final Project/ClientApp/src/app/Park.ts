@@ -4,6 +4,8 @@
 //
 //   const post = Convert.toPost(json);
 
+import { User } from "./User";
+
 export interface Park {
     total?: string;
     limit?: string;
@@ -125,6 +127,19 @@ export class Convert {
         return JSON.parse(json);
     }
     public static parkArrayToJson(value: Park[]): string {
+        return JSON.stringify(value);
+    }
+    public static toUser(json: string): User {
+        return JSON.parse(json);
+    }
+
+    public static userToJson(value: User): string {
+        return JSON.stringify(value);
+    }
+    public static toUserArray(json: string): User[] {
+        return JSON.parse(json);
+    }
+    public static userArrayToJson(value: User[]): string {
         return JSON.stringify(value);
     }
 }
