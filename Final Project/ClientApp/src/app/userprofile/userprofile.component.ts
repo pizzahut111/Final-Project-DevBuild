@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../User.service';
 import { User } from '../User';
 
+
+
 @Component({
   selector: 'app-userprofile',
   templateUrl: './userprofile.component.html',
@@ -10,21 +12,35 @@ import { User } from '../User';
 })
 export class UserprofileComponent implements OnInit {
 
-  user?: User;
+  loggedInUser?: User;
   users?: User[] = [];
   validLogin: boolean;
 
   constructor(private userService: UserService) {
     this.userService.GetUsers().subscribe(
-      (response: any) => { this.users = response }
+      (response: any) => { this.users = response;
+      //can we look through the list of users and see if any of them show isLoggedIn = true?
+      //if no one is logged in, set validLogin to false.
+      //if someone is logged in, set validLogin to true, add that user to this.user.
+
+
+      }
       // console.log(response);
       // let json = Convert.userArrayToJson(response);
       // this.users = Convert.toUserArray(json);
       // }
     );
+
   }
 
   ngOnInit() {
+    this.userService.GetLoggedInUser(
+      (loggedInUser) => {
+        //console.log(loggedInUser);
+        this.loggedInUser = loggedInUser;
+        //console.log(this.loggedInUser.email);
+      }
+    );
   }
 
 ValidateUser():boolean{
@@ -36,17 +52,16 @@ return this.validLogin;
 
 }
 
-  // LogOutUser(userId: number){
+  LogOutUser(user: User){
+    this.userService.LogOutUser(user);
+    //.subscribe(
+    //   (response: any) => { this.user = response;
+    //   let json = Convert.userToJson(response);
+    //   this.user = Convert.toUser(json);
+    //   console.log(response);
+    //   console.log(this.user.isLoggedIn);
+    //   }
+    // );
 
-  //   this.userService.UpdateUser(userId).subscribe(
-  //     (response: any) => { this.user = response;
-  //     let json = Convert.userToJson(response);
-  //     this.user = Convert.toUser(json);
-  //     console.log(response);
-  //     console.log(this.user.isLoggedIn);
-  //     }
-  //   );
-  //   this.user.isLoggedIn=false;
-  //   this.userService.UpdateUser(userId, this.user)
-  // }
+  }
 }

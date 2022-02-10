@@ -7,6 +7,7 @@ import { Convert } from './Park';
 import { ParkDetailsComponent } from './park-details/park-details.component';
 import { UserPark } from './UserPark';
 
+
 @Injectable({ providedIn: 'root' })
 export class UserService {
     url: string = "User";
@@ -33,7 +34,7 @@ export class UserService {
     }
     GetLoggedInUser(cb: any) {
         //Get logged in user to then fill out loggedInUser variable
-        let userSearch: User;
+        
 
         this.http.get(this.url+"/getLoggedInUser").subscribe(
             (response: any) => {
@@ -68,7 +69,28 @@ export class UserService {
         this.http.get(this.url+"/loginu="+username+"p="+password).subscribe(
             (response:any) => {
                 valid = response;
+                //location.reload();
+                console.log(valid);
+                if (valid === true){
+                    location.reload();
+                }
             });
+            console.log(valid);
+
             return valid;
     }
+    LogOutUser(user: User){
+        this.http.put(this.url+"/logout", user).subscribe(
+            (response: any)=>{
+                console.log("heading to the controller!");
+                location.reload();
+            }
+        );
+    }
+    GetUserList(id:number):Observable<any>{
+        let apiurl: string = this.url+"/userParkList"+id;
+        let result: Observable<any> = this.http.get(apiurl);
+        return result;
+    }
+
 }
