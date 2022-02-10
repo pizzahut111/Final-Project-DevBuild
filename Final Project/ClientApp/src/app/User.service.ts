@@ -7,6 +7,7 @@ import { Convert } from './Park';
 import { ParkDetailsComponent } from './park-details/park-details.component';
 import { UserPark } from './UserPark';
 
+
 @Injectable({ providedIn: 'root' })
 export class UserService {
     url: string = "User";
@@ -68,7 +69,16 @@ export class UserService {
         this.http.get(this.url+"/loginu="+username+"p="+password).subscribe(
             (response:any) => {
                 valid = response;
+                location.reload();
             });
             return valid;
+    }
+    LogOutUser(user: User){
+        this.http.put(this.url+"/logout", user).subscribe(
+            (response: any)=>{
+                console.log("heading to the controller!");
+                location.reload();
+            }
+        );
     }
 }

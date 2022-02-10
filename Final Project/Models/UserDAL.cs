@@ -77,15 +77,16 @@ namespace Final_Project.Models
                 connect.Close();
             }
         }
-        public void LogOutUser(int id)
+        public void LogOutUser(User u)
         {
-            string sql = "update users set isLoggedIn=false where id="+id;
+            string sql = "update users set isLoggedIn=false where id="+u.id;
             using (var connect = new MySqlConnection(Secret.Connection))
             {
                 connect.Open();
                 connect.Query<User>(sql); //we dont need anything extra here, since we arent returning anything
                 connect.Close();
             }
+            loggedInUserId = -1;
         }
         public User GetLoggedInUser()
         {
