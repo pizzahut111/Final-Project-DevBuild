@@ -54,7 +54,9 @@ export class UserService {
         // userPark.userId = user.id;
         // userPark.parkCode = parkCode;
 
-        this.http.post(this.url+"/addUserPark="+parkCode, user);
+        this.http.post(this.url+"/addUserPark="+parkCode, user).subscribe(
+            (result:any)=>{console.log(result)}
+        );
         console.log(this.url+"/addUserPark="+parkCode, user.email);
         
         
