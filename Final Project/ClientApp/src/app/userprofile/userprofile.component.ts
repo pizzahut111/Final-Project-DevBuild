@@ -36,9 +36,9 @@ export class UserprofileComponent implements OnInit {
   ngOnInit() {
     this.userService.GetLoggedInUser(
       (loggedInUser) => {
-        console.log(loggedInUser);
+        //console.log(loggedInUser);
         this.loggedInUser = loggedInUser;
-        console.log(this.loggedInUser.email);
+        //console.log(this.loggedInUser.email);
       }
     );
   }

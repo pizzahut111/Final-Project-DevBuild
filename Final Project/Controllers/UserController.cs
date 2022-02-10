@@ -84,5 +84,10 @@ namespace Final_Project.Controllers
         {
             ud.LogOutUser(u);
         }
+        [HttpGet("userParkList{id}")]
+        public Park GetUserParks(int id)
+        {
+            return upd.GetUserParks(id);
+        }
     }
 }
