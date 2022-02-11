@@ -90,6 +90,7 @@ h4 {
   border-radius: 10px;
   text-align: left;
   padding: 6px;
+  margin-right: 32px;
 }
 
 h5 {
@@ -104,6 +105,21 @@ p {
   background-color: #cbceeb;
   border-radius: 10px;
   padding: 6px;
+}
+
+.button {
+  background-color: #be851c;
+  border-radius: 12px;
+  font-size: 12px;
+  /* Green */
+  border: none;
+  color: white;
+  padding: 8px 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  /* margin: 4px 2px; */
+  cursor: pointer;
 }
 
 .tipslist {
