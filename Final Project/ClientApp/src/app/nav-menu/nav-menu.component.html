@@ -25,12 +25,6 @@
               [routerLinkActiveOptions]="{ exact: true }">
             <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
           </li>
-          <!--<li class="nav-item" [routerLinkActive]="['link-active']">
-    <a class="nav-link text-dark" [routerLink]="['/counter']">Counter</a>
-  </li>
-  <li class="nav-item" [routerLinkActive]="['link-active']">
-    <a class="nav-link text-dark" [routerLink]="['/fetch-data']">Fetch data</a>
-  </li>-->
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/park-list']">Park List</a>
           </li>
@@ -40,13 +34,15 @@
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/search']">Search</a>
           </li>
-          <!-- <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/topfive']">Top Five</a>
-          </li> -->
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/user']">User</a>
+          <li *ngIf="loggedInUser.id===0" class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/user']">Login</a>
           </li>
-
+          <li *ngIf="loggedInUser.id>0" class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/user']">Favorites</a>
+          </li>
+          <li *ngIf="loggedInUser.id>0">
+            <a class="nav-link text-dark"><button (click)="LogOutUser(loggedInUser)">Log out</button></a>
+          </li>
         </ul>
       </div>
     </div>
