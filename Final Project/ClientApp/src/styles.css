@@ -49,6 +49,16 @@ body {
   padding-top: 3%;
 }
 
+.row {
+  display: flex;
+  /* text-align: right; */
+}
+
+.column {
+  flex: 50%;
+  padding: 5px;
+}
+
 .sectionheading {
   font-family: 'comic-sans';
   font-weight: bold;
@@ -111,9 +121,8 @@ p {
   background-color: #be851c;
   border-radius: 12px;
   font-size: 12px;
-  /* Green */
   border: none;
-  color: white;
+  color: black;
   padding: 8px 8px;
   text-align: center;
   text-decoration: none;
@@ -159,16 +168,37 @@ input[type=checkbox]:checked+label.strikethrough {
 .quote {
   color: rgb(73, 67, 67);
   font-style: italic;
-  font-size: 14px;
+  font-size: 17px;
   background-color: #cbceeb;
   border-radius: 10px;
   padding: 0px;
+  /* text-align: center; */
+  float: center;
   width: fit-content;
+}
+
+.imagetext {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
 }
 
 img {
   border: 5px #cbceeb;
-  width: fit-content;
+  /* width: fit-content; */
+  text-align: right;
+}
+
+#wrangell,
+#muir {
+  Display: inline-block;
+  Width: 50%;
+  /* do not write float when using display:inline-block.     */
+}
+
+#wrangell img,
+#muir img {
+  Width: 100%;
 }
 
 .center {
