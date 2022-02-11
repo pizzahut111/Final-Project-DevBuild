@@ -1,9 +1,9 @@
-<h2>Search a park</h2>
+<h4>Search a park</h4>
 
 
 <input type="text" id="parkSearch" />
 
-<button (click)="SearchPark()">Search</button>
+<button class="button" (click)="SearchPark()">Search</button>
 
 <div *ngIf="searchedpark">
   <div *ngFor="let p of searchedpark">

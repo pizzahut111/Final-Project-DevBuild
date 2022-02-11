@@ -1,13 +1,13 @@
 
 <body>
-
-  <div>
+<div id="detail{{singlePark.parkCode}}">
+  <div (click)="CollapseDetails(singlePark.parkCode)">
     <h4>{{singlePark.fullName}}<button class="button" style="float: right" (click)="AddParkToUserList(singlePark.parkCode)">Add to Favorites</button></h4>
     <div> 
   </div>
 
   <div>
-    <img class="img" src="{{singlePark.images[0].url}}" height="400px" width="auto"/>
+    <img class ="img" src="{{singlePark.images[0].url}}" width="auto" height="300px"/>
   </div>
   <div>
     <p>{{singlePark.description}}</p>
@@ -40,5 +40,5 @@
 
   </div>
 </div>
-
+</div>
 </body>
