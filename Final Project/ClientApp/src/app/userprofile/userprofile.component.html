@@ -1,23 +1,5 @@
 
 
-<!-- <h4>Y'all ready for this?</h4>
-<div *ngFor="let user of users">
-    <p>{{user.first_Name}}</p>
-</div> -->
-<!--<div *ngFor="let u of users">
-    <div id="user{{u.id}}" *ngIf="u.isLoggedIn">
-    <p>Welcome {{u.first_Name}}!</p>
-        <button (click)="LogOutUser(u.id)" >Log Out</button>
-
-
-    </div>
-    <div *ngIf="u.isLoggedIn===false">
-        <p> Please log in below!</p>
-
-        
-    </div>
-
-</div>-->
 <div *ngIf="loggedInUser.id===0">
     <div>
         <h4>Please Login Below</h4>
@@ -35,11 +17,9 @@
     </div>
 </div>
 <div *ngIf="loggedInUser.id>0">
-    <p>Welcome {{loggedInUser.first_Name}}!</p>
-<!--Add User Park table here!-->
-
-<button (click)="LogOutUser(loggedInUser)" >Log Out</button>
-<app-user-favorites [Id]=loggedInUser.id></app-user-favorites>
+  <p style = "font-family:georgia,garamond,serif;font-size:18px;font-style:italic;">Welcome {{loggedInUser.first_Name}}, Here is your saved park list!</p> 
+  <!--<button (click)="LogOutUser(loggedInUser)">Log Out</button>-->
+  <app-user-favorites [Id]=loggedInUser.id></app-user-favorites>
 </div>
 
 
