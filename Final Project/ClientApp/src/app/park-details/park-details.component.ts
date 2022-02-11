@@ -38,24 +38,38 @@ singlePark?: Park["data"][0];
         
       }
     );
-    //this doesnt work
-    //this.user = this.userService.GetLoggedInUser();
+
 
   }
   AddParkToUserList(parkCode:string){
     this.userService.GetLoggedInUser(
       (loggedInUser) => {
         console.log(loggedInUser);
-      
-        // if(this.user!=null)
-        // {
           
         this.userService.AddParkToUserList(parkCode, loggedInUser);
     
       }
     );
+
+  }
+  CollapseDetails(parkCode: string){
+    let detailPanel = document.getElementById("detail"+parkCode);
+    let searchPanel = document.getElementById("search"+parkCode);
     
-    // }
+    if (detailPanel.style.display === "" || detailPanel.style.display === "inherit")
+    {
+      detailPanel.style.display = "none";
+      searchPanel.style.display = "inherit";
+      console.log("hiding display");
+    }
+    else if (detailPanel.style.display === "none")
+    {
+      let searchParent = searchPanel.parentNode;
+    let searchElement=document.createElement("p");
+    searchElement.textContent=searchPanel.textContent;
+    searchElement.id=searchPanel.id;
+    searchParent.replaceChild(searchElement, searchPanel);
+    }
   }
 
 }
