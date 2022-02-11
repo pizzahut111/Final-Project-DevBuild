@@ -1,42 +1,44 @@
-<div>
-  <h4>{{singlePark.fullName}}<button (click)="AddParkToUserList(singlePark.parkCode)">Add to Favorites</button></h4>
+
+<body>
+
   <div>
-  <button (click)="AddParkToUserList(singlePark.parkCode)">Add to List</button>  
-</div>
-</div>
+    <h4>{{singlePark.fullName}}<button class="button" style="float: right" (click)="AddParkToUserList(singlePark.parkCode)">Add to Favorites</button></h4>
+    <div> 
+  </div>
 
-<div>
-  <p><a href="{{singlePark.url}}">{{singlePark.name}} Official Website</a></p>
-</div>
+  <div>
+    <img class="img" src="{{singlePark.images[0].url}}" height="400px" width="auto"/>
+  </div>
+  <div>
+    <p>{{singlePark.description}}</p>
+  </div>
 
-<div>
-  <img class="img" src="{{singlePark.images[0].url}}" height="400px" width="auto"/>
-</div>
-<div>
-  <p>{{singlePark.description}}</p>
-</div>
+  <div>
+    <p>Entrance fees:</p>
+    
+    <div *ngIf="singlePark && singlePark.entranceFees">
+      <div *ngFor="let fee of singlePark.entranceFees">
+        
+            <p>{{fee.title}}: ${{fee.cost}}</p>
+            <p>{{fee.description}}</p>
+      </div>
+    </div>
 
-<div>
-  <p>Entrance fees:</p>
-  
-  <div *ngIf="singlePark && singlePark.entranceFees">
-    <div *ngFor="let fee of singlePark.entranceFees">
-      
-          <p>{{fee.title}}: ${{fee.cost}}</p>
-          <p>{{fee.description}}</p>
+    <div>
+      <p><a href="{{singlePark.url}}">{{singlePark.name}} Official Website</a></p>
     </div>
   </div>
+  <div>
+    <h4>Park Activities:</h4>
+    <div> <!--This is a good candidate for flexbox or global formatting in styles.css -->
+      <table>
+        <div *ngFor="let a of singlePark.activities">
+          <td style="border-bottom: 2px solid black">{{a.name}}</td>
+        </div>
+      </table>
+    </div>
 
-  
-</div>
-<div>
-  <h4>Park Activities:</h4>
-  <div> <!--This is a good candidate for flexbox or global formatting in styles.css -->
-    <table>
-      <div *ngFor="let a of singlePark.activities">
-        <td style="border-bottom: 2px solid black">{{a.name}}</td>
-      </div>
-    </table>
   </div>
-
 </div>
+
+</body>
