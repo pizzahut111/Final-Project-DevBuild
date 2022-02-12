@@ -12,13 +12,13 @@
         <button (click)="ValidateUser()">Login</button>
         <div *ngIf="validLogin===false">
             <p>Incorrect User Name and Password - please try again.</p>
-            <!--this would need a callback - review later-->
+            
         </div>
     </div>
 </div>
 <div *ngIf="loggedInUser.id>0">
   <p style = "font-family:georgia,garamond,serif;font-size:18px;font-style:italic;">Welcome {{loggedInUser.first_Name}}, Here is your saved park list!</p> 
-  <!--<button (click)="LogOutUser(loggedInUser)">Log Out</button>-->
+  
   <app-user-favorites [Id]=loggedInUser.id></app-user-favorites>
 </div>
 

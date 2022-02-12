@@ -1,10 +1,10 @@
 
 <body>
 <div id="detail{{singlePark.parkCode}}">
-  <div (click)="CollapseDetails(singlePark.parkCode)">
-    <h4>{{singlePark.fullName}}<button class="button" style="float: right" (click)="AddParkToUserList(singlePark.parkCode)">Add to Favorites</button></h4>
-    <div> 
-  </div>
+  <div>
+    <div>
+      <h4>{{singlePark.fullName}}<button class="button" id="addListButton{{singlePark.parkCode}}" style="float: right" (click)="AddParkToUserList(singlePark.parkCode)">Add to Favorites</button></h4>
+    </div>
 
   <div>
     <img class ="img" src="{{singlePark.images[0].url}}" width="auto" height="300px"/>

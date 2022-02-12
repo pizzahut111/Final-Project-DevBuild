@@ -34,8 +34,6 @@ export class UserService {
     }
     GetLoggedInUser(cb: any) {
         //Get logged in user to then fill out loggedInUser variable
-        
-
         this.http.get(this.url+"/getLoggedInUser").subscribe(
             (response: any) => {
                 console.log("***getting logged in user***");
@@ -43,10 +41,7 @@ export class UserService {
                 cb(response);
             }
         );
-            //this.loggedInUser = userSearch;
 
-        
-        
     }
     AddParkToUserList(parkCode: string, user: User){
         // let userPark: UserPark;
@@ -59,9 +54,7 @@ export class UserService {
             (result:any)=>{console.log(result)}
         );
         console.log(this.url+"/addUserPark="+parkCode, user.email);
-        
-        
-        //console.log(this.loggedInUser.email);
+
     }
     ValidateUser(username: string, password: string):boolean{
         //change return type to bool once we see a valid response
