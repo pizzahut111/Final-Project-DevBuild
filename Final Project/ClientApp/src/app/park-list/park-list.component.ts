@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { deepEqual } from 'assert';
 import { Convert, Park } from '../Park';
 import { ParkService } from '../Park.service';
 
@@ -22,37 +23,28 @@ parks?: Park[] = [];
          console.log(this.park);
        }
      );
-
-    //this.parkService.GetParks().subscribe(
-    //  (response: any) => {
-    //    console.log(response);
-    //    let json = Convert.parkArrayToJson(response);
-    //    this.parks = Convert.toParkArray(json);
-    //    console.log(this.parks);
-    //  }
-    //    );
-      
    }
 
   ngOnInit() {
-
   }
   ExpandDetails(parkCode: string){
-    //let searchPanel = document.getElementById("search"+parkCode);
+    
     let detailPanel = document.getElementById("detail"+parkCode);
+    let listPanel = document.getElementById("list"+parkCode);
+    let loginButton = document.getElementById("loginButton");
+    let addButton = document.getElementById("addListButton"+parkCode);
 
     if (detailPanel.style.display === "none")
     {
       detailPanel.style.display = "inherit";
-      //searchPanel.style.display = "none";
-      //console.log("does this display details?");
+      if (loginButton !== null){
+        addButton.setAttribute("hidden", "hidden");
+      }
     }
     else if (detailPanel.style.display === "" || detailPanel.style.display === "inherit")
     {
       detailPanel.style.display = "none";
-      //searchPanel.style.display = "inherit";
-      console.log("hiding display");
+      listPanel.style.display = "inherit";
     }
   }
-
 }

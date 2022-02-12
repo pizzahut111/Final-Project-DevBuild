@@ -35,13 +35,13 @@
             <a class="nav-link text-dark" [routerLink]="['/search']">Search</a>
           </li>
           <li *ngIf="loggedInUser.id===0" class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/user']">Login</a>
+            <a class="nav-link text-dark" [routerLink]="['/user']" id="loginButton">Login</a>
           </li>
           <li *ngIf="loggedInUser.id>0" class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/user']">Favorites</a>
           </li>
           <li *ngIf="loggedInUser.id>0">
-            <a class="nav-link text-dark"><button (click)="LogOutUser(loggedInUser)">Log out</button></a>
+            <a class="nav-link text-dark"><button class = "button" (click)="LogOutUser(loggedInUser)">Log out</button></a>
           </li>
         </ul>
       </div>

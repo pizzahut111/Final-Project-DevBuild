@@ -16,24 +16,11 @@ export class UserFavoritesComponent implements OnInit {
   user?:User;
 
   constructor(private userService: UserService, private parkService: ParkService) { 
-    // console.log(this.user.id);
-    // this.userService.GetUserList(this.id).subscribe(
-    //   (response:any)=> {
-    //     console.log(this.id);
-    //     let json = Convert.parkToJson(response);
-    //     this.park = Convert.toPark(json);
-    //   }
-    // );
+
   }
 
   ngOnInit() {
-    // this.userService.GetLoggedInUser(
-    //   (user) => {
-    //     //console.log(loggedInUser);
-    //     this.user = user;
-        
-    // }
-    // );
+
     console.log(this.Id);
    this.userService.GetUserList(this.Id).subscribe(
     (response: any)=> {
@@ -43,20 +30,19 @@ export class UserFavoritesComponent implements OnInit {
    );
    }
    ExpandDetails(parkCode: string){
-    //let searchPanel = document.getElementById("search"+parkCode);
+    let userListPanel = document.getElementById("userlist"+parkCode);
     let detailPanel = document.getElementById("detail"+parkCode);
+    let addButton = document.getElementById("addListButton"+parkCode);
 
     if (detailPanel.style.display === "none")
     {
       detailPanel.style.display = "inherit";
-      //searchPanel.style.display = "none";
-      //console.log("does this display details?");
+      addButton.setAttribute("hidden", "hidden");
     }
     else if (detailPanel.style.display === "" || detailPanel.style.display === "inherit")
     {
       detailPanel.style.display = "none";
-      //searchPanel.style.display = "inherit";
-      console.log("hiding display");
+      userListPanel.style.display = "inherit";
     }
   }
 }
