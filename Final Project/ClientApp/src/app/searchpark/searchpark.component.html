@@ -1,5 +1,8 @@
-<h4>Search a park</h4>
+<div>
+  <h2 id="HomePageHeader">Search Our Parks</h2>
+</div>
 
+<br>
 
 <input type="text" id="parkSearch" />
 
@@ -8,7 +11,7 @@
 <div *ngIf="searchedpark">
   <div *ngFor="let p of searchedpark">
     <div id="search{{p.parkCode}}" (click)="ExpandDetails(p.parkCode)">
-    <p>{{p.fullName}}</p>
+      <p>{{p.fullName}}</p>
     </div>
     <app-park-details id="detail{{p.parkCode}}" style="display: none;" [parkCode]=p.parkCode></app-park-details>
   </div>

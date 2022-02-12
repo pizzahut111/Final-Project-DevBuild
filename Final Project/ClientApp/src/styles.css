@@ -59,6 +59,18 @@ body {
   padding: 5px;
 }
 
+.activitycolumns {
+  width: fit-content;
+  margin: 0 auto;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  column-gap: 30px;
+  row-gap: 2px;
+  grid-auto-flow: column;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+
+}
+
 .sectionheading {
   font-family: 'comic-sans';
   font-weight: bold;
@@ -94,6 +106,10 @@ body {
   text-align: center;
 }
 
+h3 {
+  border-radius: 10px;
+}
+
 h4 {
   color: rgb(73, 67, 67);
   background-color: #afb0c4;
@@ -101,6 +117,7 @@ h4 {
   text-align: left;
   padding: 6px;
   margin-right: 32px;
+  width: fit-content;
 }
 
 h5 {
@@ -110,11 +127,43 @@ h5 {
   padding: 6px;
 }
 
+h6 {
+  color: rgb(73, 67, 67);
+  font-size: 16px;
+  background-color: #afb0c4;
+  border-radius: 10px;
+  padding: 6px;
+  width: fit-content;
+  margin-left: 30px;
+}
+
 p {
   color: rgb(73, 67, 67);
   background-color: #cbceeb;
   border-radius: 10px;
   padding: 6px;
+}
+
+.parktitle {
+  font-family: fantasy;
+  font-weight: bold;
+  font-variant: small-caps;
+  font-size: 50px;
+  text-align: center;
+  padding: 15px;
+  border: 5px #afb0c4;
+  /* margin-top: 0px; */
+  background-color: #cbceeb;
+
+}
+
+.fees {
+  color: rgb(73, 67, 67);
+  margin-left: 30px;
+  background-color: #cbceeb;
+  border-radius: 6px;
+  padding: 2px;
+  width: fit-content
 }
 
 .button {
@@ -193,7 +242,19 @@ input[type=checkbox]:checked+label.strikethrough {
   border-radius: 10px;
   padding: 0px;
   /* text-align: center; */
-  float: center;
+  float: inline-start;
+  width: fit-content;
+}
+
+.activities {
+  color: rgb(73, 67, 67);
+  font-size: 14px;
+  background-color: #cbceeb;
+  border-radius: 10px;
+  padding: 3px;
+  border: 5px rgb(73, 67, 67);
+  /* text-align: center; */
+  /* float: inline-start; */
   width: fit-content;
 }
 
