@@ -1,44 +1,61 @@
 
 <body>
 <div id="detail{{singlePark.parkCode}}">
+
   <div>
+
     <div>
-      <h4>{{singlePark.fullName}}<button class="button" id="addListButton{{singlePark.parkCode}}" style="float: right" (click)="AddParkToUserList(singlePark.parkCode)">Add to Favorites</button></h4>
+      <h3 class="parktitle">{{singlePark.fullName}}<button class="button" id="addListButton{{singlePark.parkCode}}" style="float: right" 
+        (click)="AddParkToUserList(singlePark.parkCode)">Add to Favorites</button></h3>
     </div>
+
+<br>
 
   <div>
     <img class ="img" src="{{singlePark.images[0].url}}" width="auto" height="300px"/>
   </div>
+
+<br>
+
   <div>
     <p>{{singlePark.description}}</p>
   </div>
 
+<br>
+
   <div>
-    <p>Entrance fees:</p>
-    
+    <h4>Fees & Passes</h4>
     <div *ngIf="singlePark && singlePark.entranceFees">
       <div *ngFor="let fee of singlePark.entranceFees">
-        
-            <p>{{fee.title}}: ${{fee.cost}}</p>
-            <p>{{fee.description}}</p>
+        <div >
+            <h6>{{fee.title}} (${{fee.cost}})</h6>
+            <p class="fees">{{fee.description}}</p>
+            <br>
+        </div>
       </div>
     </div>
-
-    <div>
-      <p><a href="{{singlePark.url}}">{{singlePark.name}} Official Website</a></p>
-    </div>
   </div>
+
+  <br>
+
   <div>
-    <h4>Park Activities:</h4>
-    <div> <!--This is a good candidate for flexbox or global formatting in styles.css -->
-      <table>
+    <h4>Park Activities</h4>
+    <br>
+    <div>
+      <table class="activitycolumns">
         <div *ngFor="let a of singlePark.activities">
-          <td style="border-bottom: 2px solid black">{{a.name}}</td>
+          <p class="activities"><input type="checkbox"><td>  {{a.name}}</td></p>
         </div>
       </table>
     </div>
-
   </div>
+
+  <br>
+
+  <div class="center">
+    <h4>Official Park Website <a href="{{singlePark.url}}">here</a></h4>
+  </div>
+  <br>
 </div>
 </div>
 </body>
