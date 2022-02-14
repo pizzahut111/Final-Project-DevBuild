@@ -14,17 +14,17 @@ namespace Final_Project.Controllers
     {
         ParkDAL dal = new ParkDAL();
         UserParkDAL userParkDAL = new UserParkDAL();
+
         [HttpGet("parkCode={parkCode}")]
         public Park GetParkByParkCode(string parkCode)
         {
-
             return dal.GetParkByParkCode(parkCode);
         }
+
         [HttpGet("api")]
         public Park GetAllParks()
         {
             //dal.AddParksToDB();
-            //userParkDAL.GetUserParks(2);
             return dal.GetAllParks();
         }
 

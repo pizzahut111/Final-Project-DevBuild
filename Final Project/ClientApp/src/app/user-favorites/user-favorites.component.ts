@@ -10,37 +10,33 @@ import { UserService } from '../User.service';
   styleUrls: ['./user-favorites.component.scss']
 })
 export class UserFavoritesComponent implements OnInit {
-  @Input() Id:number;
+  @Input() Id: number;
   @Input() parkCode: string;
   park?: Park;
-  user?:User;
+  user?: User;
 
-  constructor(private userService: UserService, private parkService: ParkService) { 
+  constructor(private userService: UserService, private parkService: ParkService) {
 
   }
 
   ngOnInit() {
+    this.userService.GetUserList(this.Id).subscribe(
+      (response: any) => {
+        let json = Convert.parkToJson(response);
+        this.park = Convert.toPark(json);
+      }
+    );
+  }
+  ExpandDetails(parkCode: string) {
+    let userListPanel = document.getElementById("userlist" + parkCode);
+    let detailPanel = document.getElementById("detail" + parkCode);
+    let addButton = document.getElementById("addListButton" + parkCode);
 
-    console.log(this.Id);
-   this.userService.GetUserList(this.Id).subscribe(
-    (response: any)=> {
-      let json = Convert.parkToJson(response);
-      this.park = Convert.toPark(json);
-    }
-   );
-   }
-   ExpandDetails(parkCode: string){
-    let userListPanel = document.getElementById("userlist"+parkCode);
-    let detailPanel = document.getElementById("detail"+parkCode);
-    let addButton = document.getElementById("addListButton"+parkCode);
-
-    if (detailPanel.style.display === "none")
-    {
+    if (detailPanel.style.display === "none") {
       detailPanel.style.display = "inherit";
       addButton.setAttribute("hidden", "hidden");
     }
-    else if (detailPanel.style.display === "" || detailPanel.style.display === "inherit")
-    {
+    else if (detailPanel.style.display === "" || detailPanel.style.display === "inherit") {
       detailPanel.style.display = "none";
       userListPanel.style.display = "inherit";
     }

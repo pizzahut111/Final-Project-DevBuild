@@ -22,6 +22,7 @@ namespace Final_Project.Models
                 return allUsers;
             }
         }
+
         public User GetUserByID(int id)
         {
             using (var connect = new MySqlConnection(Secret.Connection))
@@ -40,6 +41,7 @@ namespace Final_Project.Models
                 return match;
             }
         }
+
         public void UpdateUser(int id, User newValues)
         {
             string sql = $"update users set First_Name='{newValues.First_Name}', " +
@@ -53,27 +55,29 @@ namespace Final_Project.Models
             using (var connect = new MySqlConnection(Secret.Connection))
             {
                 connect.Open();
-                connect.Query<User>(sql); //we dont need anything extra here, since we arent returning anything
+                connect.Query<User>(sql); 
                 connect.Close();
             }
         }
+
         public void CreateUser(User newValues)
         {
             string sql = $"insert into users values(0, '{newValues.First_Name}', '{newValues.Last_Name}', '{newValues.Email}', '{newValues.User_Name}', '{newValues.Password}', '{newValues.Home_state_code}',{newValues.IsLoggedIn})";
             using (var connect = new MySqlConnection(Secret.Connection))
             {
                 connect.Open();
-                connect.Query<User>(sql); //we dont need anything extra here, since we arent returning anything
+                connect.Query<User>(sql); 
                 connect.Close();
             }
         }
+
         public void DeleteUser(int id)
         {
             string sql = $"delete from users where id={id}";
             using (var connect = new MySqlConnection(Secret.Connection))
             {
                 connect.Open();
-                connect.Query<User>(sql); //we dont need anything extra here, since we arent returning anything
+                connect.Query<User>(sql); 
                 connect.Close();
             }
         }
@@ -83,7 +87,7 @@ namespace Final_Project.Models
             using (var connect = new MySqlConnection(Secret.Connection))
             {
                 connect.Open();
-                connect.Query<User>(sql); //we dont need anything extra here, since we arent returning anything
+                connect.Query<User>(sql); 
                 connect.Close();
             }
             loggedInUserId = -1;
@@ -100,14 +104,8 @@ namespace Final_Project.Models
                     User loggedInUser = connect.Query<User>(sql).ToList().First();
                     connect.Close();
 
-                    //if (loggedInUser == null)
-                    //{
-                    //    loggedInUser.First_Name = "No one is logged in!";
-                    //}
-
                     return loggedInUser;
                 }
-
             }
             else
             {
@@ -115,12 +113,6 @@ namespace Final_Project.Models
                 return nullUser;
             }
         }
-        //Need a method to first look up all users, and compare the username that we pass in from frontend.
-        //If username is found, compare password from FE.
-        //If all matches, 
-        //Change our logged in userID in BE (above - called loggedInUserId)
-        //Update the DB to remove any existing isLoggedIn=true on the list, and update the current user's isLoggedIn bool to true.
-        //Return true, meaning login was successful
 
         public bool ValidateUser(string username, string password)
         {
@@ -135,9 +127,6 @@ namespace Final_Project.Models
                         u.IsLoggedIn = true;
                         UpdateUser(u.id, u);
                         loggedInUserId = u.id;
-                        //sql statement to update this particular user's loggedIn bool - build a logout method to use here, 
-                        //or just write a sql statement to flip all other bools to false?  How do we know which users to flip?
-                        //can we use a where statement in the sql string to say something like "where userid!=u.id"?
                         string sql = $"update users set isloggedin=false where id !={u.id}";
                         using (var connect = new MySqlConnection(Secret.Connection))
                         {
@@ -145,12 +134,10 @@ namespace Final_Project.Models
                             connect.Query<User>(sql); 
                             connect.Close();
                         }
-
                         return true;
                     }
                     return false;
                 }
-                
             }
             return false;
         }

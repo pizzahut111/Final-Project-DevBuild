@@ -20,36 +20,33 @@ export class SearchparkComponent implements OnInit {
       }
     );
   }
+
   ngOnInit() {
   }
   SearchPark() {
     this.searchedpark.length = 0;
     let parkSearch: string = (<HTMLInputElement>document.getElementById("parkSearch")).value;
-    console.log(parkSearch);
     for (let i = 0; i <= this.park.data.length; i++) {
       if (this.park.data[i].fullName.toLowerCase().includes(parkSearch.toLowerCase())) {
         this.searchedpark.push(this.park.data[i]);
-
       }
     }
 
   }
-  ExpandDetails(parkCode: string){
-    
-    let detailPanel = document.getElementById("detail"+parkCode);
-    let searchPanel = document.getElementById("search"+parkCode);
+  ExpandDetails(parkCode: string) {
+
+    let detailPanel = document.getElementById("detail" + parkCode);
+    let searchPanel = document.getElementById("search" + parkCode);
     let loginButton = document.getElementById("loginButton");
-    let addButton = document.getElementById("addListButton"+parkCode);
-    if (detailPanel.style.display === "none")
-    {
+    let addButton = document.getElementById("addListButton" + parkCode);
+    if (detailPanel.style.display === "none") {
       detailPanel.style.display = "inherit";
-      if (loginButton !== null){
+      if (loginButton !== null) {
         addButton.setAttribute("hidden", "hidden");
       }
     }
-    
-    else if (detailPanel.style.display === "" || detailPanel.style.display === "inherit")
-    {
+
+    else if (detailPanel.style.display === "" || detailPanel.style.display === "inherit") {
       detailPanel.style.display = "none";
       searchPanel.style.display = "inherit";
     }
