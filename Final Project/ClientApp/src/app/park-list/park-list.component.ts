@@ -16,7 +16,8 @@ export class ParkListComponent implements OnInit {
   parks?: Park[] = [];
 
   constructor(private parkService: ParkService) {
-    this.parkService.GetParks().subscribe(
+    //this.parkService.GetParks().subscribe(
+    this.parkService.GetLimitedParks().subscribe(
       (response: any) => {
         let json = Convert.parkToJson(response);
         this.park = Convert.toPark(json);

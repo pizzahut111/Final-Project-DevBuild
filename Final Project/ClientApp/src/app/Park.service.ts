@@ -23,4 +23,9 @@ GetParkByParkCode(parkCode:string):Observable<any>{
     let result : Observable<any> = this.http.get(apiurl);
     return result;
   }
+  GetLimitedParks(): Observable<any> {
+    let apiurl: string = this.url + "/limitedparks";
+    let result: Observable<any> = this.http.get(apiurl);
+    return result;
+  }
 }
