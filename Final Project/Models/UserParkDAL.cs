@@ -24,7 +24,6 @@ namespace Final_Project.Models
        
         public void AddUserParks(string parkCode, User user)
         {
-
                 string sql = $"insert into users_parks values(0, {user.id}, '{parkCode}')";
                 using (var connect = new MySqlConnection(Secret.Connection))
                 {
@@ -32,8 +31,8 @@ namespace Final_Project.Models
                     connect.Query<UserPark>(sql);
                     connect.Close();
                 }
-            
         }
+
         public void DeleteUserParks(string parkcode, int userid)
         {
             string sql = $"delete from users_parks where parkcode='{parkcode}' and UserId={userid}";
@@ -44,6 +43,7 @@ namespace Final_Project.Models
                 connect.Close();
             }
         }
+
         public Park GetUserParks(int userId)
         {
             using (var connect = new MySqlConnection(Secret.Connection))
@@ -54,16 +54,9 @@ namespace Final_Project.Models
                 connect.Close();
                 Park p = new Park();
                 Datum[] p1 = new Datum[allParkcodes.Count];
-                // Park p1 = new Park();
-                //foreach (string parcode in allParkcodes)
-                //{
                 for (int i= 0;i< allParkcodes.Count;i++)
                 { 
-                    //p1 = pd.GetParkByParkCode(parcode).data;
                     p1[i] = pd.GetParkByParkCode(allParkcodes[i]).data[0];
-                    
-                    //p.data.ToList();               
-                   
                 }
                 p.data = p1;
                 return p;
