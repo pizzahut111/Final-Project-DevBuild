@@ -28,6 +28,13 @@ namespace Final_Project.Controllers
             return dal.GetAllParks();
         }
 
+        [HttpGet("limitedparks")]
+        public Park GetLimitedParks()
+        {
+            //dal.AddParksToDB();
+            return dal.GetLimitedParks();
+        }
+
     }
 
 }

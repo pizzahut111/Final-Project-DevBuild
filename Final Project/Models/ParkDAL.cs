@@ -54,5 +54,18 @@ namespace Final_Project.Models
                 }
             }
         }
+        public Park GetLimitedParks()
+        {
+            string url = "https://developer.nps.gov/api/v1/parks?&limit=30" + apiKey;
+            HttpWebRequest request = WebRequest.CreateHttp(url);
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            StreamReader rd = new StreamReader(response.GetResponseStream());
+            string JSON = rd.ReadToEnd();
+            rd.Close();
+
+            Park pList = JsonConvert.DeserializeObject<Park>(JSON);
+            return pList;
+
+        }
     }
 }
